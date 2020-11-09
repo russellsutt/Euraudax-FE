@@ -1,0 +1,32 @@
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
+import Event from '../components/Event'
+
+const BASE_API = "http://localhost:3000/"
+
+class EventContainer extends Component {
+
+    state = {
+        events: []
+    }
+
+    componentDidMount() {
+        fetch(BASE_API + "events")
+            .then(resp => resp.json())
+            .then( data => this.setState({ events: data }))
+    }
+
+    renderEvents = () => {
+        return this.state.events.map(event => <Event event={event} key={event.id} user={this.props.user} refresh={this.props.fresh} profileEventHandler={this.props.profileEventHandler}/>)
+    }
+
+    render() {
+        return (
+            <div>
+                { this.state.events.length > 0 ? this.renderEvents() : null }
+            </div>
+        )
+    }
+}
+
+export default withRouter(EventContainer)

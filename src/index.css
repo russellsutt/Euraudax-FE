@@ -1,0 +1,15 @@
+html, body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #DEDBD2;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
