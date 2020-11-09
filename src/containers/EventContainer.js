@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import Event from '../components/Event'
+import EventCard from '../components/EventCard'
 
 const BASE_API = "http://localhost:3000/"
 
@@ -17,7 +17,7 @@ class EventContainer extends Component {
     }
 
     renderEvents = () => {
-        return this.state.events.map(event => <Event event={event} key={event.id} user={this.props.user} refresh={this.props.fresh} profileEventHandler={this.props.profileEventHandler}/>)
+        return this.state.events.map(event => <EventCard event={event} key={event.id} user={this.props.user} refresh={this.props.fresh} profileEventHandler={this.props.profileEventHandler}/>)
     }
 
     render() {

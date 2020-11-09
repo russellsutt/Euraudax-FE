@@ -124,9 +124,9 @@ class CreateContainer extends Component {
                         <Form.Group>
                             <h3>Pace</h3>
                             <Form.Control as="select" name="pace" value={this.state.pace} onChange={this.changeHandler}>
-                                <option value="slow"> 10-14 MPH </option>
-                                <option value="medium"> 15-19 MPH </option>
-                                <option value="fast"> 20-24 MPH </option>
+                                <option value="10-14 MPH"> 10-14 MPH </option>
+                                <option value="15-19 MPH"> 15-19 MPH </option>
+                                <option value="20-24 MPH"> 20-24 MPH </option>
                             </Form.Control>
                         </Form.Group>
                         <Form.Group>

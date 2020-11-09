@@ -20,7 +20,7 @@ $orange: #ec992c;
     &::before {
       background: rgba(10,72,112, 0.6);
     }
-    .book-container {
+    .event-container {
       .content {
         opacity: 1;
 
@@ -55,7 +55,8 @@ ul{
     list-style: none;
     padding:0;
   
-  .booking-card{
+  .event-card{
+    box-shadow: 3px 3px 10px black;
     position: relative;
     width: 300px;
     display: flex;
@@ -63,7 +64,7 @@ ul{
     flex-direction: column;
     
     margin: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     @include radius(10px);
     
     overflow: hidden;
@@ -89,8 +90,8 @@ ul{
       transition: .3s;
     }
     
-    .book-container {
-      height: 200px;
+    .event-container {
+      height: 125px;
       .content {
         position: relative;
         opacity: 0;
@@ -105,7 +106,6 @@ ul{
         transition: .3s;
         
         .btn {      
-          border: 3px solid white;
           padding: 10px 15px;
           
           background: none;
@@ -113,19 +113,16 @@ ul{
           text-transform: uppercase;
           font-weight: bold;
           font-size: 1.3em;
-          color: white;
-          
+          color: #e55743;
+          background-color: rgba(0, 0, 0, .75);
           cursor: pointer;
+          transition: background .8s ease;
           
           transition: .3s;
           
           &:hover {
-            background: white;
-            
-            border: 0px solid white;
-            
-            color: $blue;
-          }
+		        background: rgba(100, 0, 0, .75);
+	        }
         }
       }
     }
@@ -141,7 +138,7 @@ ul{
       
       transition: .3s;
       
-      .title {
+      .event-title {
         position: relative;
         
         padding-bottom: 10px;

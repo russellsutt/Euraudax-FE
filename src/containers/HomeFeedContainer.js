@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import Event from '../components/Event'
+import EventCard from '../components/EventCard'
+import '../components/scss/Event.scss'
 
 const BASE_API = 'http://localhost:3000/'
 
@@ -30,7 +31,7 @@ class HomeFeedContainer extends Component {
     renderUserEvents = () => {
         if (this.state.events.length > 0 ) {
             return this.state.events.map(event => {
-                return <Event key={event.id} event={event} user={this.props.user} refresh={this.props.refresh} profileEventHandler={this.props.profileEventHandler}/>
+                return <EventCard key={event.id} event={event} user={this.props.user} refresh={this.props.refresh} profileEventHandler={this.props.profileEventHandler}/>
             })
         }
     }
@@ -38,10 +39,9 @@ class HomeFeedContainer extends Component {
     render() {
         return (
             <div className="main-feed">
-                <div className="title-wrapper">
-                    <h1 className="title">Feed</h1>
-                </div>
-                {this.renderUserEvents()}
+                <ul>
+                    {this.renderUserEvents()}
+                </ul>
             </div>
         )
     }
