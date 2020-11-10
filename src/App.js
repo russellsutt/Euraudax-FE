@@ -25,7 +25,6 @@ class App extends Component {
       })
       .then(r => r.json())
         .then(data => {
-          console.log(data)
           this.setState({ newUser: data.user });
       })
       .then(this.props.history.push('/home'))

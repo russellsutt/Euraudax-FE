@@ -66,7 +66,6 @@ class HomePageContainer extends Component {
             </div>
         )
     }
-
 }
 
 

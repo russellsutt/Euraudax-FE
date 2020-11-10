@@ -36,14 +36,14 @@ $orange: #ec992c;
     }
 }
 
-*{
+*.event-card {
   margin: 0;
   padding: 0;
   
   font-family: $font;
 }
 
-h2{
+h2.event-card {
   color: #0a4870;
   font-weight: 500;
 }
@@ -164,11 +164,11 @@ ul{
         }
       }
       
-      .price {
+      .details {
         display: flex;
         align-items: center;
         justify-content: center;
-        
+        font-weight: bold;
         margin-top: 10px;
         
         .icon {
@@ -247,6 +247,6 @@ ul{
   }
 }
 
-h1{
+h1.event-card {
   margin: 10px 20px;
 }

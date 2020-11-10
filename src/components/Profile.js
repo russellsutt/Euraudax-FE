@@ -21,7 +21,7 @@ class Profile extends Component {
                         <Card.Title>{user.firstname} {user.lastname}</Card.Title>
                         <Card.Subtitle>{user.city}, {user.state}</Card.Subtitle>
                         <br/>
-                        <h2>About Me</h2>
+                        <h3>About Me</h3>
                         <Card.Text> {user.bio}</Card.Text>
                     </Card.Body>
                 </Card>
@@ -33,3 +33,24 @@ class Profile extends Component {
 }
 
 export default withRouter(Profile)
+
+
+
+<div class="rela-block container">
+    <div class="rela-block profile-card">
+        <div class="profile-pic" id="profile_pic"></div>
+        <div class="rela-block profile-name-container">
+            <div class="rela-block user-name" id="user_name">{user.firstname} {user.lastname}</div>
+            <div class="rela-block user-desc" id="user_description">{user.bio}</div>
+        </div>
+        <div class="rela-block profile-card-stats">
+            <div class="floated profile-stat works" id="num_works">28<br></div>
+            <div class="floated profile-stat followers" id="num_followers">0<br></div>
+            <div class="floated profile-stat following" id="num_following">0<br></div>
+        </div>
+    </div>
+    <div class="rela-block content">
+            <div class="rela-inline image"></div>
+    </div>
+    <div class="rela-inline button more-images" onclick="add_images(); inf_scroll = true;">More Images</div>
+</div>

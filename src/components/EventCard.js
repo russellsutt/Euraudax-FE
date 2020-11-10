@@ -101,9 +101,11 @@ class EventCard extends Component {
         if (route.estimated_time) {
             let convertedTime = new Date(this.props.event.route.estimated_time * 1000).toISOString().substr(11, 8);
             let splitTime = convertedTime.split('')
-            let splicedTime = splitTime.splice(0, 5)
-            let finalTime = splicedTime.join('')
-            return finalTime
+            var splicedTime = splitTime.splice(0, 5)
+            splicedTime[2] = 'hr'
+            splicedTime.push('min')
+            splicedTime.splice(3, 0, ' ')
+            return splicedTime.join('')
         }
     }
 
@@ -129,7 +131,7 @@ class EventCard extends Component {
     render() {
         const event = this.props.event
         return (
-            <li className="event-card" style={{ backgroundImage: `URL(${this.state.map.src})`, backgroundSize: '500px', backgroundRepeat: 'no-repeat', backgroundPosition: 'top'}}>
+            <li className="event-card" style={{ backgroundImage: `URL(${this.state.map.src})`, backgroundSize: '500px', backgroundRepeat: 'no-repeat', backgroundPosition: 'top'}} id={event.id}>
                 <div className="event-container">
                     {this.props.user.id === event.user.id ? null : <div className="content">
                         {!this.state.attended ? <button className='btn' onClick={() => { this.attendEvent() }}>RSVP!</button> : <button onClick={() => this.leaveEvent()}>UNRSVP!</button>}
@@ -138,9 +140,9 @@ class EventCard extends Component {
                 <div className="informations-container">
                     <h2 className="event-title">{event.title}</h2>
                     <p className="sub-title">{event.route.description}</p>
-                    <p className="price">Distance: {this.convertDistance(event.route)} miles | Elev: {event.route.elevation} ft
+                    <p className="details">Distance: {this.convertDistance(event.route)} miles | Elev: {event.route.elevation} ft
                         <br/>
-                        Avg Time: {this.convertSeconds(event.route)} | Pace: {event.pace}
+                        Avg Time: {this.convertSeconds(event.route)} | {event.pace}
                         <br />
                         <br/>
                         { this.state.attendees.length + 1 } cyclist(s) RSVP'd

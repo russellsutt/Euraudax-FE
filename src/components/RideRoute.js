@@ -25,7 +25,7 @@ class RideRoute extends Component {
         const route = this.props.route
         return (
             <div>
-                <h2>{route.title}</h2>
+                <h1>{route.title}</h1>
                 {route ? <p> {this.convertDistance()} miles | Elev: {route.elevation} ft | Avg Time: {this.convertSeconds()} </p> : null }
                 <Map key={route.id} polyline={route.polyline}/>
             </div>

@@ -14,7 +14,7 @@ class CreateContainer extends Component {
         title: '',
         date: new Date(),
         time: 43200,
-        pace: '',
+        pace: '10-14 MPH',
         archived: false,
         routes: [],
         selectedRouteId: 1,
@@ -127,6 +127,7 @@ class CreateContainer extends Component {
                                 <option value="10-14 MPH"> 10-14 MPH </option>
                                 <option value="15-19 MPH"> 15-19 MPH </option>
                                 <option value="20-24 MPH"> 20-24 MPH </option>
+                                <option value="25+ MPG"> 25+ MPH </option>
                             </Form.Control>
                         </Form.Group>
                         <Form.Group>

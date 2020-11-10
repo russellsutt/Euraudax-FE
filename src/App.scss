@@ -25,13 +25,18 @@
     border: 0.5px solid black;
   }
 
+.profile-image{
+  max-height: 150px;
+
+}
+
 .grid-container {
   height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: 18.5% 30% 30% 18.5%;
   grid-template-rows: 10% 10% 15% 15% 15% 15% 14%;
-  gap: 1% 1%;
+  gap: 2% .3%;
   grid-template-areas:
     "top-banner top-banner top-banner top-banner"
     "side-profile navbar navbar weather"
@@ -73,19 +78,34 @@
   grid-area: top-banner; 
   margin-left: 1%;
   margin-right: 1%;
+  border-style: solid;
+  border-color: #e55743;
 }
 
 .side-profile { 
-  grid-area: side-profile; 
+  grid-area: side-profile;
+  margin-top: 5%;
   margin-left: 10%;
   margin-bottom: 5%;
   position: relative;
 }
 
+.side-profile-container {
+  color: white;
+  background-color: #000000c5;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #e55743;
+}
+
 .weather { 
   grid-area: weather;
-  margin-right: 5%;
+  margin-top: 10%;
+  margin-right: 10%;
   margin-bottom: 5%;
+  text-align: center;
 }
 
 .logout-button {
@@ -109,7 +129,7 @@
 .profile-image {
     margin-top: 5%;
     max-width: 90%;
-    max-height: 90%;
+    max-height: 300px;
     object-fit: cover;
     border-radius: 50%;
     overflow: hidden;
@@ -218,7 +238,7 @@ button {
   margin: auto;
 	--offset: 10px;
 	--border-size: 2px;
-	padding: 1em 2em;
+	padding: 1em 1em;
 	appearance: none;
 	border: 0;
 	background: transparent;

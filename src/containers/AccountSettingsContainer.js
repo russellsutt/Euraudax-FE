@@ -45,7 +45,6 @@ class AccountSettingsContainer extends Component {
             })
         })
         .then(resp => resp.json())
-        .then(() => this.props.history.push('/home'))
         .catch(err => console.log(err))
     }
 
@@ -58,7 +57,7 @@ class AccountSettingsContainer extends Component {
             <div className="main-feed">
                 <Container fluid>
                     <h1>Update Account</h1>
-                    <Form onSubmit={this.submitHandler}>
+                    <Form onSubmit={() => this.submitHandler()}>
                         <Form.Group>
                             <Form.Label>First Name</Form.Label>
                             <Form.Control type="text" placeholder="First Name" name='firstname' value={this.state.firstname} onChange={this.changeHandler}/>
@@ -88,7 +87,7 @@ class AccountSettingsContainer extends Component {
                         <button onClick={this.backToProfile}>Cancel</button>
                         <br />
                         <br />
-                        <button variant='warning' onClick={() => { this.props.history.push('/home/accountsettings') }}>Import Strava Account</button>
+                        <button onClick={() => { this.props.history.push('/home/accountsettings') }}>Import Strava Account</button>
                     </Form>
                 </Container>
             </div>

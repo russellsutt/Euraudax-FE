@@ -8,7 +8,6 @@ class ProfileContainer extends Component {
     render() {
         return (
             <div className="main-feed">
-                <h1>Profile Container</h1>
                 <Profile key={this.props.user.id} user={this.props.user} />
             </div>
         )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import './scss/Weather.scss'
+import { Card } from 'react-bootstrap'
 
 class Weather extends Component {
 
@@ -11,7 +12,8 @@ class Weather extends Component {
         tempMax: '',
         tempMin: '',
         humidity: '',
-        weatherDescription: ''
+        weatherDescription: '',
+        weatherIcon: ''
     }
 
     capitalize = (string) => {
@@ -33,7 +35,8 @@ class Weather extends Component {
                     tempMax: data.main.temp_max,
                     tempMin: data.main.temp_min,
                     humidity: data.main.humidity,
-                    weatherDescription: data.weather[0].description
+                    weatherDescription: data.weather[0].description,
+                    weatherIconId: data.weather[0].icon
                 })
             })
             .catch(err => console.log(err))
@@ -44,15 +47,14 @@ class Weather extends Component {
 
         return (
             <div className="weather">
-                <div>
-                    <h5>Today's Weather</h5>
-                    <h6>NYC</h6>
-                    <h6>{this.state.month} - {this.state.date} - {this.state.year}</h6>
-                    <h6>{this.capitalize(this.state.weatherDescription)}</h6>
-                    <h6>Temperature: {this.state.temperature}°F</h6>
-                    <h6>High: {this.state.tempMax}°F</h6>
-                    <h6>Low: {this.state.tempMin}°F</h6>
-                    <h6>Humidity: {this.state.humidity}%</h6>
+                <div className="weather-card">
+                    <h2 style={{textDecoration: 'underline', letterSpacing: '.15em' }}>NYC</h2>
+                    <h3>{this.capitalize(this.state.weatherDescription)}
+                        <br />
+                    Humidity {this.state.humidity}%</h3>
+                    <br/>
+                    <h1>{parseInt(this.state.temperature)}°F</h1>
+                    <img className="weather-icon" src={`http://openweathermap.org/img/wn/${this.state.weatherIconId}@2x.png`} alt=''></img>
                 </div>
             </div>
         )
@@ -60,3 +62,6 @@ class Weather extends Component {
 }
 
 export default Weather;
+
+
+
