@@ -45,17 +45,18 @@ class Map extends Component {
 
     render() {
         return (
-            <div className="map-wrapper">
-                    <StaticGoogleMap
+                <StaticGoogleMap
                     google={this.props.google}
                     size="600x600"
                     className='map'
-                    apiKey={process.env.REACT_APP_GOOGLE_API_TOKEN}>
-                    <Path points={this.state.coordinates} strokeColor="#0000FF" strokeOpacity=  {0.8} strokeWeight= {2} />
+                    apiKey={process.env.REACT_APP_GOOGLE_API_TOKEN}
+                    id={this.props.hidden}
+                    data-id={this.props.id}
+                    >
+                    <Path points={this.state.coordinates} strokeColor="#0000FF" strokeOpacity={0.8} strokeWeight={2} />
                 </StaticGoogleMap>
-            </div>
         )
     }
 }
 
-export default Map
+export default Map;

@@ -12,6 +12,7 @@ class EventCard extends Component {
         attendees: [],
         attended: false,
         event: {},
+        map: ''
     }
 
     componentDidMount() {
@@ -24,6 +25,7 @@ class EventCard extends Component {
         } else {
             this.setState({ attended: false })
         }
+        this.getMapUrl()
     }
 
     attendEvent = () => {
@@ -106,11 +108,16 @@ class EventCard extends Component {
         }
     }
 
+    getMapUrl = () => {
+        let newMap = document.querySelector(`.map[data-id="${this.props.event.id}"]`)
+        this.setState({ map: newMap })
+    }
+
 
     render() {
         const event = this.props.event
         return (
-            <li className="event-card" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1532509854226-a2d9d8e66f8e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ")'}}>
+            <li className="event-card" style={{ backgroundImage: `URL(${this.state.map.src})`, backgroundSize: '500px', backgroundRepeat: 'no-repeat', backgroundPosition: 'top'}}>
                 <div className="event-container">
                     <div className="content">
                         {!this.state.attended ? <button className='btn' onClick={() => { this.attendEvent() }}>RSVP!</button> : <button onClick={() => this.leaveEvent()}>UNRSVP!</button>}
@@ -119,26 +126,35 @@ class EventCard extends Component {
                 <div className="informations-container">
                     <h2 className="event-title">{event.title}</h2>
                     <p className="sub-title">{event.route.description}</p>
-                    <p className="price">Distance: {this.convertDistance(event.route)} | Elev: {event.route.elevation}<br />Avg Time: {this.convertSeconds(event.route)} | Pace: {event.pace} </p>
+                    <p className="price">Distance: {this.convertDistance(event.route)} | Elev: {event.route.elevation}
+                        <br/>
+                        Avg Time: {this.convertSeconds(event.route)} | Pace: {event.pace}
+                        <br />
+                        <br/>
+                        {this.props.event.attendees.length + 1 } cyclist(s) RSVP'd
+                    </p>
                     <div className="more-information">
                         <div className="info-and-date-container">
                             <div className="box info">
-                                <svg className="icon" style={{ width: '15px', height: '15px'}} viewBox="0 0 24 24">
+                                <svg className="icon" style={{ width: '24px', height: '24px'}} viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
                                 </svg>
-                                <p>New York City, New York</p>
+                                <p>New York, New York</p>
                             </div>
                             <div className="box date">
-                                <svg className="icon" style={{width: '24px;height:24px'}} viewBox="0 0 24 24">
+                                <svg className="icon" style={{ width: '24px', height: '24px'}} viewBox="0 0 24 24">
                                     <path fill="currentColor" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z" />
                                 </svg>
                                 <p>{event.date} at {this.convertTime()}</p>
                             </div>
                         </div>
-                        <p class="disclaimer">Hosted by {event.user.firstname} {event.user.lastname} <img height='50px' width='50px' src={event.user.pic} alt='' className="profile-side-image"/></p>
+                        <p className="disclaimer">Hosted by {event.user.firstname} {event.user.lastname} <img height='50px' width='50px' src={event.user.pic} alt='' className="profile-side-image" /></p>
+                        <Map key={event.id} polyline={this.props.event.route.polyline} hidden='hidden' id={event.id}/>
                     </div>
                 </div>
+
             </li>
+
         )
     }
 }

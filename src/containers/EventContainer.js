@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import EventCard from '../components/EventCard'
+import '../components/scss/Event.scss'
 
 const BASE_API = "http://localhost:3000/"
 
@@ -23,7 +24,9 @@ class EventContainer extends Component {
     render() {
         return (
             <div>
-                { this.state.events.length > 0 ? this.renderEvents() : null }
+                <ul>
+                    {this.state.events.length > 0 ? this.renderEvents() : null}
+                </ul>
             </div>
         )
     }

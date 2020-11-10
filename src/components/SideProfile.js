@@ -43,8 +43,12 @@ class SideProfile extends Component {
                             {this.props.user.events ? this.renderHostedEvents() : null}
                         </ListGroup>
                     </Container>
+                    <br/>
+                    <Container fluid>
                     <h5> Attending </h5>
-                    { this.props.attending ? this.renderAttendingEvents() : null }
+                        {this.props.attending ? this.renderAttendingEvents() : null}
+                    </Container>
+                    <br/>
                     <button className="account-settings-button" onClick={() => this.props.history.push('/home/accountsettings')}>Account Settings</button>
                     <button className="logout-button" variant="danger" onClick={() => this.props.logoutHandler()}>Logout</button>
                 </div>

@@ -31,7 +31,7 @@ class HomeFeedContainer extends Component {
     renderUserEvents = () => {
         if (this.state.events.length > 0 ) {
             return this.state.events.map(event => {
-                return <EventCard key={event.id} event={event} user={this.props.user} refresh={this.props.refresh} profileEventHandler={this.props.profileEventHandler}/>
+                return <EventCard key={`${event.id}`} event={event} user={this.props.user} refresh={this.props.refresh} profileEventHandler={this.props.profileEventHandler}/>
             })
         }
     }
