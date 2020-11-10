@@ -10,7 +10,7 @@ class ExploreContainer extends Component {
         return (
             <div className="main-feed">
                 <h1>Explore</h1>
-                <EventContainer user={this.props.user} refresh={this.props.refresh} profileEventHandler={this.profileEventHandler}/>
+                <EventContainer user={this.props.user} profileEventHandler={this.props.profileEventHandler}/>
             </div>
         )
     }

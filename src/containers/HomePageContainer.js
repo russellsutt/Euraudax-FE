@@ -20,6 +20,21 @@ class HomePageContainer extends Component {
         attending: this.props.user.attendees
     }
 
+    componentDidMount() {
+        const token = localStorage.getItem("token")
+        if (token) {
+            fetch(`${BASE_API}/profile`, {
+                method: "GET",
+                headers: { Authorization: `Bearer ${token}` },
+            })
+                .then(r => r.json())
+                .then(data => {
+                    this.setState({ user: data.user, hosting: data.user.events, attending: data.user.attendees });
+                })
+                .catch(error => console.log(error))
+        }
+    }
+
     navBarHandler = (event) => {
         this.props.history.push(event)
     }
@@ -41,7 +56,7 @@ class HomePageContainer extends Component {
                 <SideProfile logoutHandler={this.props.logoutHandler} user={this.state.user} host={this.state.host} attending={this.state.attending}/>
                 <NavBar navBarHandler={this.navBarHandler} />
                     <Switch>
-                        <Route exact path='/home' render={() => <HomeFeedContainer refresh={this.componentDidMount} host={this.state.host} user={this.state.user} profileEventHandler={this.profileEventHandler} attending={this.state.attending}/>} />
+                        <Route exact path='/home' render={() => <HomeFeedContainer refresh={this.componentDidMount} host={this.state.host} user={this.state.user} profileEventHandler={this.profileEventHandler} />} />
                         <Route path='/home/create' render={() => <CreateContainer refresh={this.componentDidMount} user={this.state.user}/> }/>
                         <Route path='/home/explore' render={() => <ExploreContainer refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler}/> }/>
                         <Route path='/home/profile' render={() => <ProfileContainer refresh={this.componentDidMount} user={this.state.user}/>}/>

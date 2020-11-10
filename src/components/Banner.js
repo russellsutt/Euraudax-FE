@@ -7,7 +7,7 @@ class Banner extends Component {
     render() {
         return (
             <div className="top-banner">
-                <img className='banner-img' src={banner} width="100%" height="300px" alt=''/>
+                <img className='banner-img' src={banner} width="100%" height="250px" alt=''/>
             </div>
         )
     }

@@ -45,7 +45,7 @@ class AccountSettingsContainer extends Component {
             })
         })
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(() => this.props.history.push('/home'))
         .catch(err => console.log(err))
     }
 
@@ -83,10 +83,12 @@ class AccountSettingsContainer extends Component {
                             <Form.Control type="text" name='pic' value={this.state.pic} onChange={this.changeHandler}/>
                         </Form.Group>
                         <button type="submit">Save Settings</button>
+                        <br />
                         <br/>
                         <button onClick={this.backToProfile}>Cancel</button>
-                        <br/>
-                        <button variant='warning'>Import Strava Account</button>
+                        <br />
+                        <br />
+                        <button variant='warning' onClick={() => { this.props.history.push('/home/accountsettings') }}>Import Strava Account</button>
                     </Form>
                 </Container>
             </div>

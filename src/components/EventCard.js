@@ -40,13 +40,12 @@ class EventCard extends Component {
             .then(resp => resp.json())
             .then(data => {
                 this.setState({ attendees: [...this.state.attendees, data], attended: true });
-                this.props.profileEventHandler(data)
+                this.props.homeFeedHandler(data)
             }
             )
     }
 
     findAttendance = () => {
-        console.log(this.state.attendees)
         if (this.state.attendees.find(attendee => attendee.user_id === this.props.user.id)) {
             return this.state.attendees.find(attendee => attendee.user_id === this.props.user.id)
         } else if (this.state.attendees.find(attendee => attendee.user.id === this.props.user.id)) {
@@ -66,11 +65,11 @@ class EventCard extends Component {
                     'accepts': 'application/json',
                 }
             })
-                .then(() => {
-                    this.props.profileEventHandler(attendance)
-                    let updatedArray = this.state.attendees.filter(attendee => attendance.id !== attendee.id)
-                    this.setState({ attended: false, attendees: updatedArray });
-                })
+            .then(() => {
+                this.props.homeFeedHandler(attendance)
+                let updatedArray = this.state.attendees.filter(attendee => attendance.id !== attendee.id)
+                this.setState({ attended: false, attendees: updatedArray });
+            })
         }
     }
 
@@ -113,25 +112,38 @@ class EventCard extends Component {
         this.setState({ map: newMap })
     }
 
+    cancelEvent = () => {
+        console.log(`${BASE_API}events/${this.props.event.id}`)
+        fetch(`${BASE_API}events/${this.props.event.id}`, {
+            method: "DELETE",
+            headers: {
+                    'content-type': 'application/json',
+                    'accepts': 'application/json',
+                }
+        })
+        .then(resp => console.log(resp))
+        .then(() => {this.props.history.push('/home')})
+    }
+
 
     render() {
         const event = this.props.event
         return (
             <li className="event-card" style={{ backgroundImage: `URL(${this.state.map.src})`, backgroundSize: '500px', backgroundRepeat: 'no-repeat', backgroundPosition: 'top'}}>
                 <div className="event-container">
-                    <div className="content">
+                    {this.props.user.id === event.user.id ? null : <div className="content">
                         {!this.state.attended ? <button className='btn' onClick={() => { this.attendEvent() }}>RSVP!</button> : <button onClick={() => this.leaveEvent()}>UNRSVP!</button>}
-                    </div>
+                    </div> }
                 </div>
                 <div className="informations-container">
                     <h2 className="event-title">{event.title}</h2>
                     <p className="sub-title">{event.route.description}</p>
-                    <p className="price">Distance: {this.convertDistance(event.route)} | Elev: {event.route.elevation}
+                    <p className="price">Distance: {this.convertDistance(event.route)} miles | Elev: {event.route.elevation} ft
                         <br/>
                         Avg Time: {this.convertSeconds(event.route)} | Pace: {event.pace}
                         <br />
                         <br/>
-                        {this.props.event.attendees.length + 1 } cyclist(s) RSVP'd
+                        { this.state.attendees.length + 1 } cyclist(s) RSVP'd
                     </p>
                     <div className="more-information">
                         <div className="info-and-date-container">
@@ -148,7 +160,11 @@ class EventCard extends Component {
                                 <p>{event.date} at {this.convertTime()}</p>
                             </div>
                         </div>
-                        <p className="disclaimer">Hosted by {event.user.firstname} {event.user.lastname} <img height='50px' width='50px' src={event.user.pic} alt='' className="profile-side-image" /></p>
+                        <p className="disclaimer">Hosted by {event.user.firstname} {event.user.lastname} <img height='50px' width='50px' src={event.user.pic} alt='' className="profile-side-image" />
+                            <br />
+                            <br/>
+                            {this.props.event.user.id === this.props.user.id ? <button onClick={this.cancelEvent}>Cancel Event</button> : null}
+                        </p>
                         <Map key={event.id} polyline={this.props.event.route.polyline} hidden='hidden' id={event.id}/>
                     </div>
                 </div>

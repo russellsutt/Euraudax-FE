@@ -22,6 +22,10 @@ class Login extends Component {
         e.preventDefault()
         this.props.loginHandler(this.state)
     }
+
+    euraudax = () => {
+        window.open("https://en.wikipedia.org/wiki/Audax_(cycling)#Euraudax_(original_form_of_audax)", "-blank");
+    }
     
     render(){
 
@@ -42,6 +46,8 @@ class Login extends Component {
                     </Form>
                     <button variant="warning" id="new-user" onClick={() => this.props.history.push('/signup')}>New User? Register Here</button>
                 </div>
+                <br/>
+                <button onClick={this.euraudax}>What's a Euraudax?</button>
             </div>
         )
     }
