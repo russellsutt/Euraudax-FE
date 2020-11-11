@@ -12,7 +12,7 @@ class Welcome extends Component {
         return (
             <div className="welcome-container">
                 <div className="bg-video-container">
-                    <ReactPlayer id="banner-video" width="100%" height="100" loop="true" playing={true} volume="0"  muted={true} url={bgVideo} type="video/mp4" />
+                    <ReactPlayer id="welcome-video" width="100%" height="100" loop="true" playing={true} volume="0"  muted={true} url={bgVideo} type="video/mp4" />
                 </div>
                 <div className="welcome-card">
                     <Jumbotron id="welcome-message">
