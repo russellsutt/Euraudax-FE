@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Card } from 'react-bootstrap'
+import './scss/Profile.scss'
 
 
 
@@ -14,19 +14,22 @@ class Profile extends Component {
         const user = this.props.user
         return (
             <div className="main-feed">
-                <img alt="" className='profile-image' src={user.pic} />
-                <br/>
-                <Card bg='secondary' text='light'>
-                    <Card.Body>
-                        <Card.Title>{user.firstname} {user.lastname}</Card.Title>
-                        <Card.Subtitle>{user.city}, {user.state}</Card.Subtitle>
-                        <br/>
-                        <h3>About Me</h3>
-                        <Card.Text> {user.bio}</Card.Text>
-                    </Card.Body>
-                </Card>
-                <br/>
-                <button>Follow {user.firstname}</button>
+                <div className="rela-block-container">
+                    <div className="profile-card">
+                        <div className="profile-pic" id="profile_pic" style={{ background: `url(${this.props.user.pic})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '178px' }}></div>
+                        <div className="profile-name-container">
+                            <div className="user-name" id="user_name">{user.firstname} {user.lastname}</div>
+                            <div className="user-desc" id="user_description">{user.bio}<br />{user.city}, {user.state}</div>
+                        </div>
+                        <div className="profile-card-stats">
+                            <div className="profile-stat works" id="num_works"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>{ user.events ? user.events.length : 0 }</span> hosted events</div>
+                            <div className="profile-stat followers" id="num_followers"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>{user.followers ? user.followers.length : 0}</span>  followers </div>
+                            <div className="profile-stat following" id="num_following"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>{user.following ? user.following.length : 0}</span>  following</div>
+                        </div>
+                    </div>
+                </div>
+            <br/>
+            <button>Follow {user.firstname}</button>
             </div>
         )
     }
@@ -36,21 +39,3 @@ export default withRouter(Profile)
 
 
 
-<div class="rela-block container">
-    <div class="rela-block profile-card">
-        <div class="profile-pic" id="profile_pic"></div>
-        <div class="rela-block profile-name-container">
-            <div class="rela-block user-name" id="user_name">{user.firstname} {user.lastname}</div>
-            <div class="rela-block user-desc" id="user_description">{user.bio}</div>
-        </div>
-        <div class="rela-block profile-card-stats">
-            <div class="floated profile-stat works" id="num_works">28<br></div>
-            <div class="floated profile-stat followers" id="num_followers">0<br></div>
-            <div class="floated profile-stat following" id="num_following">0<br></div>
-        </div>
-    </div>
-    <div class="rela-block content">
-            <div class="rela-inline image"></div>
-    </div>
-    <div class="rela-inline button more-images" onclick="add_images(); inf_scroll = true;">More Images</div>
-</div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './scss/Weather.scss'
-import { Card } from 'react-bootstrap'
 
 class Weather extends Component {
 

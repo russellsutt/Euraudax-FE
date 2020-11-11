@@ -36,7 +36,7 @@
   display: grid;
   grid-template-columns: 18.5% 30% 30% 18.5%;
   grid-template-rows: 10% 10% 15% 15% 15% 15% 14%;
-  gap: 2% .3%;
+  gap: 1% 1%;
   grid-template-areas:
     "top-banner top-banner top-banner top-banner"
     "side-profile navbar navbar weather"
@@ -51,13 +51,14 @@
 
 .main-feed { 
   grid-area: main-feed;
+  height: 100%;
+  width: 100%;
   justify-content: center;
   margin-bottom: 1.7%;
 }
 
 .navbar { 
   grid-area: navbar;
-  
   margin-top: 1%;
   margin-bottom: 1%;
 }

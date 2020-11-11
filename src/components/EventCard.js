@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import CommentContainer from '../containers/CommentContainer'
 import './scss/Event.scss'
 import Map from './Map'
 
@@ -19,8 +18,7 @@ class EventCard extends Component {
         if (this.props.event.attendees) {
             this.setState({ attendees: this.props.event.attendees })
         }
-        let checkAttendance = this.props.event.attendees.find(attendee => attendee.user_id === this.props.user.id)
-        if (checkAttendance) {
+        if (this.findAttendanceProps()) {
             this.setState({ attended: true })
         } else {
             this.setState({ attended: false })
@@ -43,6 +41,28 @@ class EventCard extends Component {
                 this.props.homeFeedHandler(data)
             }
             )
+    }
+
+    findAttendanceProps = () => {
+        let userAttendances;
+        if (this.props.user.attendees) {
+            userAttendances = this.props.user.attendees.map(attendee => attendee.id)
+        }
+        let eventAttendances;
+        if (this.props.event.attendees) {
+            eventAttendances = this.props.event.attendees.map(attendee => attendee.id)
+        }
+        if ((userAttendances) && (eventAttendances)) {
+            for (let i = 0; i < userAttendances.length; i++) {
+                for (let j = 0; j < eventAttendances.length; j++) {
+                    if ( userAttendances[i] === eventAttendances[j] ) {
+                        return true
+                    }
+                }
+            }
+        } else {
+            return false
+        }
     }
 
     findAttendance = () => {
@@ -88,7 +108,14 @@ class EventCard extends Component {
                 return hour + minutes + " P.M."
             }
         } else {
-            return finalMilitaryTime + " A.M."
+            if (this.props.event.time < 36000) {
+                let minutes = finalMilitaryTime.slice(2)
+                let stringHours = finalMilitaryTime.slice(0, 2)
+                let hour = parseInt(stringHours)
+                return hour + minutes + " A.M."
+            } else {
+                return finalMilitaryTime + " A.M."
+            }
         }
     }
 
@@ -163,6 +190,9 @@ class EventCard extends Component {
                             </div>
                         </div>
                         <p className="disclaimer">Hosted by {event.user.firstname} {event.user.lastname} <img height='50px' width='50px' src={event.user.pic} alt='' className="profile-side-image" />
+                            <br />
+                            <br />
+                            <button onClick={() => { this.props.renderEvent(event.id) }}>Go to Event</button>
                             <br />
                             <br/>
                             {this.props.event.user.id === this.props.user.id ? <button onClick={this.cancelEvent}>Cancel Event</button> : null}

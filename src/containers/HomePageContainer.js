@@ -9,6 +9,7 @@ import HomeFeedContainer from './HomeFeedContainer'
 import CreateContainer from './CreateContainer'
 import ProfileContainer from './ProfileContainer'
 import Banner from '../components/Banner'
+import EventShow from '../components/EventShow'
 
 const BASE_API = "http://localhost:3000/"
 
@@ -17,7 +18,8 @@ class HomePageContainer extends Component {
     state = {
         user: this.props.user,
         hosting: this.props.user.events,
-        attending: this.props.user.attendees
+        attending: this.props.user.attendees,
+        eventId: 11,
     }
 
     componentDidMount() {
@@ -36,6 +38,7 @@ class HomePageContainer extends Component {
     }
 
     navBarHandler = (event) => {
+        window.scrollTo(0, 0)
         this.props.history.push(event)
     }
 
@@ -48,19 +51,25 @@ class HomePageContainer extends Component {
         }
     }
 
+    renderEventShow = (incomingEventId) => {
+        this.setState({ eventId: incomingEventId })
+        this.props.history.push('/home/event')
+    }
+
 
     render() {
         return (
             <div className="grid-container">
                 <Banner />
-                <SideProfile logoutHandler={this.props.logoutHandler} user={this.state.user} host={this.state.host} attending={this.state.attending}/>
+                <SideProfile renderEvent={this.renderEventShow} logoutHandler={this.props.logoutHandler} user={this.state.user} host={this.state.host} attending={this.state.attending}/>
                 <NavBar navBarHandler={this.navBarHandler} />
                     <Switch>
-                        <Route exact path='/home' render={() => <HomeFeedContainer refresh={this.componentDidMount} host={this.state.host} user={this.state.user} profileEventHandler={this.profileEventHandler} />} />
+                    <Route exact path='/home' render={() => <HomeFeedContainer renderEvent={this.renderEventShow} refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler} />} />
                         <Route path='/home/create' render={() => <CreateContainer refresh={this.componentDidMount} user={this.state.user}/> }/>
-                        <Route path='/home/explore' render={() => <ExploreContainer refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler}/> }/>
+                        <Route path='/home/explore' render={() => <ExploreContainer renderEvent={this.renderEventShow} refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler}/> }/>
                         <Route path='/home/profile' render={() => <ProfileContainer refresh={this.componentDidMount} user={this.state.user}/>}/>
-                        <Route path='/home/accountsettings' render={() => <AccountSettingsContainer refresh={this.componentDidMount} user={this.state.user}/>}/>
+                        <Route path='/home/accountsettings' render={() => <AccountSettingsContainer refresh={this.componentDidMount} user={this.state.user} />} />
+                    <Route path='/home/event' render={() => <EventShow key={this.state.eventId} user={this.state.user} eventId={this.state.eventId} profileEventHandler={this.profileEventHandler}/>} />
                     </Switch>
                 <Weather />
             </div>
