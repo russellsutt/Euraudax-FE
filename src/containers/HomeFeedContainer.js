@@ -77,11 +77,11 @@ class HomeFeedContainer extends Component {
             <div className="main-feed">
                 <div className="main-feed-card-container">
                     <br/>
-                    <h1 style={{textDecoration: 'underline' }}>Hosting</h1>
+                    <h1 style={{textDecoration: 'underline', letterSpacing: '.15em', textTransform: 'uppercase' }}>Hosting</h1>
                     <ul>
                         {this.renderUserEvents()}
                     </ul>
-                    <h1 style={{textDecoration: 'underline' }}>Attending</h1>
+                    <h1 style={{textDecoration: 'underline', letterSpacing: '.15em', textTransform: 'uppercase'  }}>Attending</h1>
                     <ul>
                     {this.renderAttendingEvents()}
                     </ul>

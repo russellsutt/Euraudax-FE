@@ -53,6 +53,7 @@ class Weather extends Component {
                     Humidity {this.state.humidity}%</h3>
                     <br/>
                     <h1>{parseInt(this.state.temperature)}°F</h1>
+                    <br/>
                     <img className="weather-icon" src={`http://openweathermap.org/img/wn/${this.state.weatherIconId}@2x.png`} alt=''></img>
                 </div>
             </div>

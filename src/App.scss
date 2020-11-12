@@ -5,7 +5,6 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: #DEDBD2;
 }
 
 
@@ -23,7 +22,7 @@
     border-radius: 50%;
     overflow: hidden;
     background-color: lightgrey;
-    border: 1px solid #e55743;
+    border: 1px solid #0971b6;
   }
 
 .profile-image{
@@ -47,6 +46,9 @@
     "side-profile main-feed main-feed weather";
   grid-template-rows: fit-content(5%) fit-content(5%);
   text-align: center;
+  background-image: linear-gradient(to bottom right, white, #A7D9FB);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .main-feed { 
@@ -95,7 +97,7 @@
   padding: 10px;
   border-radius: 10px;
   border-style: solid;
-  border-color: #e55743;
+  border-color: #0971b6;
 }
 
 .weather { 
@@ -117,7 +119,7 @@
   transform: scale(0.9);
   border-radius: 10px;
   border-style: solid;
-  border-color: #e55743;
+  border-color: #0971b6;
   background-color: #353434c5;
 }
 
@@ -160,7 +162,7 @@
   color: white;
   border-radius: 10px;
   border-style: solid;
-  border-color: #e55743;
+  border-color: #0971b6;
   background-color: #000000c5;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
   box-shadow: 5px 5px 15px;
@@ -181,12 +183,12 @@
     border-radius: 50%;
     overflow: hidden;
     background-color: lightgrey;
-    border: 1px solid #e55743;
+    border: 1px solid #0971b6;
     position: flex;
 }
 
 .map {
-  border: 5px solid #e55743;
+  border: 5px solid #0971b6;
   border-radius: 10px;
 }
 
@@ -223,7 +225,7 @@
 .banner-video-container{
   margin-left: 2%;
   margin-right: 2%;
-  border: 5px solid #e55743;
+  border: 5px solid #0971b6;
   border-radius: 5px;
   overflow: hidden;
   background-color: rgba(0, 0, 0, .75);
@@ -283,7 +285,7 @@ ul {
 button {
   margin: auto;
 	--offset: 10px;
-	border: 4px solid #e55743;
+	border: 4px solid #0971b6;
 	padding: 1em 1em;
 	appearance: none;
 	background: transparent;
@@ -300,7 +302,7 @@ button {
 	transition: background .8s ease;
 	
 	&:hover {
-		background: rgba(100, 0, 0, .75);
+		background: rgba(17, 92, 255, 0.75);
 	}
 }
 
@@ -310,7 +312,7 @@ button {
 
 button.delete-comment {
   padding: 9px 5px;
-  border: 5px solid #e55743;
+  border: 5px solid #0971b6;
   --offset: 0px;
   letter-spacing: 0em;
 }
@@ -319,8 +321,9 @@ button.delete-comment {
 .main-feed-card-container {
   color: white;
   border-radius: 10px;
+  border: 5px;
   border-style: solid;
-  border-color: #e55743;
+  border-color: #0971b6;
   background-color: #000000c5;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
   box-shadow: 5px 5px 15px;

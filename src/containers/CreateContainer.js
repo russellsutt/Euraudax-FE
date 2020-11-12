@@ -108,7 +108,7 @@ class CreateContainer extends Component {
                 <div className="main-feed-card-container">
                     <Container fluid>
                     <br/>
-                    <h1 className="header"><u>Host an Event!</u></h1>
+                    <h1 className="header" style={{ letterSpacing: '.15em', textTransform: 'uppercase' }}><u>Host an Event!</u></h1>
                     <br/>
                     <Form type="submit" onSubmit={this.createNewEvent} className="form-container" >
                         <Form.Group>

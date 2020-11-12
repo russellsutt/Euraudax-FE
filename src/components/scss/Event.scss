@@ -105,26 +105,31 @@ ul{
         
         transition: .3s;
         
-        .btn {      
-          padding: 10px 15px;
-          color: white;
-          background: none;
-          border: 4px solid #e55743;
-          text-transform: uppercase;
-          font-weight: bold;
-          font-size: 1.3em;
-          background-color: rgba(0, 0, 0, .75);
-          cursor: pointer;
-          transition: background .8s ease;
-          
-          transition: .3s;
-          
-          &:hover {
-		        background: rgba(100, 0, 0, .75);
-	        }
-        }
+    .btn {
+      margin: auto;
+	    --offset: 10px;
+	    border: 4px solid #0971b6;
+	    padding: 1em 1em;
+	    appearance: none;
+	    background: transparent;
+	    color: white;
+	    text-transform: uppercase;
+	    letter-spacing: .15em;
+	    outline: none;
+	    cursor: pointer;
+	    font-weight: bold;
+      border-radius: 0;
+
+      box-shadow: inset 0 0 0 var(--border-size) currentcolor;
+      background-color: rgba(0, 0, 0, .75);
+	    transition: background .8s ease;
+
+	    &:hover {
+	    	background: rgba(17, 92, 255, 0.75);
+	    }
       }
     }
+  }
     
     .informations-container{      
       flex: 1 0 auto;

@@ -6,7 +6,11 @@ html, body {
   width: 100%;
   margin: 0;
   font-family: 'Noto Sans JP', sans-serif;
-  background-color: #DEDBD2;
+  background-image: linear-gradient(to top right, white, #A7D9FB);
+}
+
+body {
+
 }
 
 #root {

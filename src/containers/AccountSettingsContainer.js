@@ -58,7 +58,7 @@ class AccountSettingsContainer extends Component {
                 <div className="main-feed-card-container">
                     <Container fluid>
                         <br/>
-                        <h1 style={{ textDecoration: 'underline'}}>Update Account</h1>
+                        <h1 style={{ textDecoration: 'underline', letterSpacing: '.15em', textTransform: 'uppercase' }}>Update Account</h1>
                         <Form className='form-container' type="submit" onSubmit={() => this.submitHandler()}> 
                             <Form.Group>
                                 <Form.Label>First Name</Form.Label>

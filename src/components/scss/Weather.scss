@@ -5,12 +5,13 @@
     justify-content: center;
     margin: 0 auto;
     padding: 5px 30px;
-    height: 250px;
+    height: 300px;
     border-radius: 10px;
     border-style: solid;
-    border-color: #e55743;
+    border-color: #0971b6;
     background-color: #000000c5;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, .2);
+    text-transform: capitalize;
 }
 
 
@@ -38,7 +39,7 @@
 
 .weather-card h3 {
     font-weight: 400;
-    font-size: 1em;
+    font-size: 1.5em;
 }
 
 .weather-card span {
@@ -52,8 +53,8 @@
 
 
 .weather-icon {
-    -webkit-filter: drop-shadow(1px 1px 5px #e55743)
-                  drop-shadow(-1px -1px 5px #e55743);
-  filter: drop-shadow(1px 1px 5px #e55743) 
-          drop-shadow(-1px -1px 5px #e55743);
+    -webkit-filter: drop-shadow(10px 10px 15px #1ba4ff)
+                  drop-shadow(-5px -5px 15px #1ba4ff);
+  filter: drop-shadow(10px 10px 15px #1ba4ff) 
+          drop-shadow(-5px -5px 15px #1ba4ff);
 }
