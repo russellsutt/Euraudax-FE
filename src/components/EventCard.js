@@ -145,10 +145,6 @@ class EventCard extends Component {
         console.log(`${BASE_API}events/${this.props.event.id}`)
         fetch(`${BASE_API}events/${this.props.event.id}`, {
             method: "DELETE",
-            headers: {
-                    'content-type': 'application/json',
-                    'accepts': 'application/json',
-                }
         })
         .then(resp => console.log(resp))
         .then(() => {this.props.history.push('/home')})
@@ -200,9 +196,7 @@ class EventCard extends Component {
                         <Map key={event.id} polyline={this.props.event.route.polyline} hidden='hidden' id={event.id}/>
                     </div>
                 </div>
-
             </li>
-
         )
     }
 }

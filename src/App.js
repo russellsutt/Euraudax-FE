@@ -14,6 +14,7 @@ class App extends Component {
 
   state = {
     newUser: {},
+    eventId: '',
   }
 
   componentDidMount() {
@@ -81,6 +82,10 @@ class App extends Component {
     localStorage.removeItem('token')
     this.setState({ user: {} })
   }
+
+  renderEventShow = (incomingEventId) => {
+    this.setState({ eventId: incomingEventId }, () => { this.props.history.push('/home/event')})
+  }
   
 
   render() {
@@ -93,7 +98,7 @@ class App extends Component {
                 <Route exact path='/' render={() => <Welcome />} />
                 <Route path='/login' render={() => <Login loginHandler={this.loginHandler} clearLogin={this.clearLogin} />} />
                 <Route path='/signup' render={() => <Signup signupHandler={this.signupHandler} clearLogin={this.clearLogin} />} />
-                <Route path='/home' render={() => <HomePageContainer logoutHandler={this.logoutHandler} user={this.state.newUser} />} />
+                <Route path='/home' render={() => <HomePageContainer logoutHandler={this.logoutHandler} user={this.state.newUser} eventId={this.state.eventId} renderEvent={this.renderEventShow}/>} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>

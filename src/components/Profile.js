@@ -28,7 +28,9 @@ class Profile extends Component {
                         </div>
                     </div>
                 </div>
-            <br/>
+                <br />
+                <button className="account-settings-button" onClick={() => this.props.history.push('/home/accountsettings')}>Account Settings</button><br />
+                <br/>
             <button>Follow {user.firstname}</button>
             </div>
         )

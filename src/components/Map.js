@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StaticGoogleMap, Path } from 'react-static-google-map'
+import { StaticGoogleMap, Path, Marker } from 'react-static-google-map'
 
 
 
@@ -45,16 +45,19 @@ class Map extends Component {
 
     render() {
         return (
+            <div className="map-container">
                 <StaticGoogleMap
                     google={this.props.google}
                     size="600x600"
                     className='map'
                     apiKey={process.env.REACT_APP_GOOGLE_API_TOKEN}
                     id={this.props.hidden}
-                    data-id={this.props.id}
-                    >
+                    data-id={this.props.id}>
+                    <Marker location={[this.state.coordinates[0]]} color='green' label='S'/>
+                    <Marker location={[this.state.coordinates.slice(-1)[0]]} label='F'/>
                     <Path points={this.state.coordinates} strokeColor="#0000FF" strokeOpacity={0.8} strokeWeight={2} />
                 </StaticGoogleMap>
+            </div>
         )
     }
 }

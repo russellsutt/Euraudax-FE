@@ -19,7 +19,7 @@ class HomePageContainer extends Component {
         user: this.props.user,
         hosting: this.props.user.events,
         attending: this.props.user.attendees,
-        eventId: 11,
+        eventId: this.props.eventId
     }
 
     componentDidMount() {
@@ -51,25 +51,20 @@ class HomePageContainer extends Component {
         }
     }
 
-    renderEventShow = (incomingEventId) => {
-        this.setState({ eventId: incomingEventId })
-        this.props.history.push('/home/event')
-    }
-
 
     render() {
         return (
             <div className="grid-container">
                 <Banner />
-                <SideProfile renderEvent={this.renderEventShow} logoutHandler={this.props.logoutHandler} user={this.state.user} host={this.state.host} attending={this.state.attending}/>
+                <SideProfile renderEvent={this.props.renderEvent} logoutHandler={this.props.logoutHandler} user={this.state.user} host={this.state.host} attending={this.state.attending}/>
                 <NavBar navBarHandler={this.navBarHandler} />
                     <Switch>
-                    <Route exact path='/home' render={() => <HomeFeedContainer renderEvent={this.renderEventShow} refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler} />} />
+                    <Route exact path='/home' render={() => <HomeFeedContainer renderEvent={this.props.renderEvent} refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler} />} />
                         <Route path='/home/create' render={() => <CreateContainer refresh={this.componentDidMount} user={this.state.user}/> }/>
-                        <Route path='/home/explore' render={() => <ExploreContainer renderEvent={this.renderEventShow} refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler}/> }/>
+                        <Route path='/home/explore' render={() => <ExploreContainer renderEvent={this.props.renderEvent} refresh={this.componentDidMount} user={this.state.user} profileEventHandler={this.profileEventHandler}/> }/>
                         <Route path='/home/profile' render={() => <ProfileContainer refresh={this.componentDidMount} user={this.state.user}/>}/>
                         <Route path='/home/accountsettings' render={() => <AccountSettingsContainer refresh={this.componentDidMount} user={this.state.user} />} />
-                    <Route path='/home/event' render={() => <EventShow key={this.state.eventId} user={this.state.user} eventId={this.state.eventId} profileEventHandler={this.profileEventHandler}/>} />
+                        <Route path='/home/event' render={() => <EventShow key={this.state.eventId} user={this.state.user} eventId={this.state.eventId} profileEventHandler={this.profileEventHandler}/>} />
                     </Switch>
                 <Weather />
             </div>

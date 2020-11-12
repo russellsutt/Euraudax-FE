@@ -23,9 +23,13 @@ class ExploreContainer extends Component {
     render() {
         return (
             <div className="main-feed">
-                <ul>
-                    {this.state.events.length > 0 ? this.renderEvents() : null}
-                </ul>
+                <div className="main-feed-card-container">
+                    <br/>
+                    <h1 style={{textDecoration: 'underline'}}>Explore</h1>
+                    <ul>
+                        {this.state.events.length > 0 ? this.renderEvents() : null}
+                    </ul>
+                </div>
             </div>
         )
     }

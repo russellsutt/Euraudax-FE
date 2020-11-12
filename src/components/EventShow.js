@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import Event from './Event'
 
 
 const BASE_API = "http://localhost:3000/"
@@ -9,39 +10,29 @@ class EventShow extends Component {
     state = {
         eventId: this.props.eventId,
         events: [],
-        event: {},
+        currentEvent: {},
     }
 
     componentDidMount() {
-        console.log(this.props)
-        fetch(`${BASE_API}events/`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        })
+        console.log(this.props.eventId)
+        fetch(BASE_API + "events")
             .then(resp => resp.json())
             .then(data => {
                 this.setState({ events: data })
-            })
-            .then(() => this.filterEvents())
+        })
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.eventId !== this.props.eventId) {
-            this.filterEvents()
-            console.log(this.state)
+    filterEvents = () => {
+        let newEvent = this.state.events.find(event => event.id === this.props.eventId);
+        if (newEvent) {
+            return <Event event={newEvent} key={newEvent.id} user={this.props.user} homeFeedHandler={this.props.profileEventHandler}/>
         }
-    }
-
-    filterEvents = () => { 
-        let newEvent = this.state.events.filter(event => event.id === this.props.eventId)
-        this.setState({ event: newEvent })
     }
 
     render() {
         return (
             <div className="main-feed">
-                <h1>{this.state.event.title}</h1>
-                <p>You're Here</p>
+                {this.state.events.length > 0 ? this.filterEvents() : null}
             </div>
         )
     }

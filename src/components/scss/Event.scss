@@ -107,13 +107,12 @@ ul{
         
         .btn {      
           padding: 10px 15px;
-          
+          color: white;
           background: none;
-          
+          border: 4px solid #e55743;
           text-transform: uppercase;
           font-weight: bold;
           font-size: 1.3em;
-          color: #e55743;
           background-color: rgba(0, 0, 0, .75);
           cursor: pointer;
           transition: background .8s ease;

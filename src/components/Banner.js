@@ -10,7 +10,7 @@ class Banner extends Component {
             <div className="top-banner">
                 <div className="banner-video-container">
                     <div className="banner-video-adjustments">
-                        <ReactPlayer id='banner-video' loop="true" playing={true} volume="0" muted={true} url={bannerVideo} type="video/mp4" width='100%' height='100%' />
+                        <ReactPlayer id='banner-video' loop={true} playing={true} volume={0} muted={true} url={bannerVideo} type="video/mp4" width='100%' height='100%' />
                     </div>
                 </div>
             </div>

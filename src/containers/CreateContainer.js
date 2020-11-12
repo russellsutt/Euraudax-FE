@@ -105,10 +105,12 @@ class CreateContainer extends Component {
     render() {
         return (
             <div className="main-feed">
-                <Container fluid>
-                    <h3 className="header"><u>Host an Event!</u></h3>
+                <div className="main-feed-card-container">
+                    <Container fluid>
                     <br/>
-                    <Form type="submit" onSubmit={this.createNewEvent}>
+                    <h1 className="header"><u>Host an Event!</u></h1>
+                    <br/>
+                    <Form type="submit" onSubmit={this.createNewEvent} className="form-container" >
                         <Form.Group>
                             <h3>Event Title</h3>
                                 <Form.Control type="text" name="title" value={this.state.title} onChange={this.changeHandler} placeholder="Name your event here!"/>
@@ -140,7 +142,8 @@ class CreateContainer extends Component {
                         </Form.Group>
                         <button variant="success" className="submit-game" type="submit">Create Event!</button>
                     </Form>
-                </Container>
+                    </Container>
+                </div>
             </div>
         )
     }

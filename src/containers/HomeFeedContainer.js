@@ -55,7 +55,7 @@ class HomeFeedContainer extends Component {
     renderUserEvents = () => {
         if (this.state.events.length > 0 ) {
             return this.state.events.map(event => {
-                return <EventCard key={`${event.id}`} event={event} user={this.props.user} refresh={this.props.refresh} homeFeedHandler={this.homeFeedHandler}/>
+                return <EventCard key={`${event.id}`} event={event} user={this.props.user} refresh={this.props.refresh} homeFeedHandler={this.homeFeedHandler} renderEvent={this.props.renderEvent}/>
             })
         } else {
             return <div><h5> You're currently not hosting any events.</h5> <br /> <button onClick={() => { this.props.history.push('home/create') }}>Create Event</button></div>
@@ -65,7 +65,7 @@ class HomeFeedContainer extends Component {
     renderAttendingEvents = () => {
         if (this.state.attending.length > 0 ) {
             return this.state.attending.map(attendee => {
-                return <EventCard key={`${attendee.event.id}`} event={attendee.event} user={this.props.user} profileEventHandler={this.props.profileEventHandler} homeFeedHandler={this.homeFeedHandler}/>
+                return <EventCard key={`${attendee.event.id}`} event={attendee.event} user={this.props.user} profileEventHandler={this.props.profileEventHandler} homeFeedHandler={this.homeFeedHandler} renderEvent={this.props.renderEvent}/>
             })
         } else {
             return <div><h5> You're currently not attending any events.</h5> <br /> <button onClick={() => { this.props.history.push('home/explore') }}>Explore Events</button></div>
@@ -75,14 +75,17 @@ class HomeFeedContainer extends Component {
     render() {
         return (
             <div className="main-feed">
-                <h1 style={{textDecoration: 'underline' }}>Hosting</h1>
-                <ul>
-                    {this.renderUserEvents()}
-                </ul>
-                <h1 style={{textDecoration: 'underline' }}>Attending</h1>
-                <ul>
+                <div className="main-feed-card-container">
+                    <br/>
+                    <h1 style={{textDecoration: 'underline' }}>Hosting</h1>
+                    <ul>
+                        {this.renderUserEvents()}
+                    </ul>
+                    <h1 style={{textDecoration: 'underline' }}>Attending</h1>
+                    <ul>
                     {this.renderAttendingEvents()}
-                </ul>
+                    </ul>
+                </div>
             </div>
         )
     }
