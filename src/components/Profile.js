@@ -23,8 +23,8 @@ class Profile extends Component {
                         </div>
                         <div className="profile-card-stats">
                             <div className="profile-stat works" id="num_works"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>{ user.events ? user.events.length : 0 }</span> hosted events</div>
-                            <div className="profile-stat followers" id="num_followers"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>{user.followers ? user.followers.length : 0}</span>  followers </div>
-                            <div className="profile-stat following" id="num_following"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>{user.following ? user.following.length : 0}</span>  following</div>
+                            <div className="profile-stat followers" id="num_followers"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>5</span> followers </div>
+                            <div className="profile-stat following" id="num_following"><span style={{ fontWeight: 'bold', fontSize: '25px'}}>3</span>  following</div>
                         </div>
                     </div>
                 </div>

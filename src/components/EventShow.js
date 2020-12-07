@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import Event from './Event'
 
 
-const BASE_API = "http://localhost:3000/"
+const BASE_API = "https://euraudax-app-api.herokuapp.com/"
 
 class EventShow extends Component {
 
@@ -14,7 +14,6 @@ class EventShow extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.eventId)
         fetch(BASE_API + "events")
             .then(resp => resp.json())
             .then(data => {

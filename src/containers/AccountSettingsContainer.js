@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Form, Container } from 'react-bootstrap'
 
-const BASE_API = "http://localhost:3000/"
+const BASE_API = "https://euraudax-app-api.herokuapp.com/"
 
 class AccountSettingsContainer extends Component {
 

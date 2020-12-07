@@ -3,7 +3,7 @@ import RideRoute from './RideRoute'
 import { withRouter } from 'react-router-dom'
 import CommentContainer from '../containers/CommentContainer'
 
-const BASE_API = "http://localhost:3000/"
+const BASE_API = "https://euraudax-app-api.herokuapp.com/"
 
 class Event extends Component {
 

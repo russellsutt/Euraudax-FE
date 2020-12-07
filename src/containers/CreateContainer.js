@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import TimePicker from 'react-bootstrap-time-picker'
 import RideRoute from '../components/RideRoute'
 
-const BASE_API = "http://localhost:3000/"
+const BASE_API = "https://euraudax-app-api.herokuapp.com/"
 
 class CreateContainer extends Component {
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Comment from '../components/Comment'
 import { Form, Container } from 'react-bootstrap'
 
-const BASE_API = "http://localhost:3000/"
+const BASE_API = "https://euraudax-app-api.herokuapp.com/"
 
 class CommentContainer extends Component {
 
@@ -55,8 +55,9 @@ class CommentContainer extends Component {
         })
         .then(() => {
             let updatedArray = this.state.allComments.filter(comment => comment.id !== commentId)
-            this.setState({ allComments: updatedArray }, () => this.renderComments())
+            this.setState({ allComments: updatedArray })
         })
+        .then(() => this.renderComments())
     }
 
     render() {
