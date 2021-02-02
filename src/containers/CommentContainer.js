@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Comment from '../components/Comment'
 import { Form, Container } from 'react-bootstrap'
 
-const BASE_API = "https://euraudax-app-api.herokuapp.com/"
+// const BASE_API = "https://euraudax-app-api.herokuapp.com/"
+const BASE_API = "http://localhost:3000/"
 
 class CommentContainer extends Component {
 

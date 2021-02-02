@@ -50,7 +50,6 @@ class App extends Component {
       localStorage.setItem("token", data.jwt)
       this.props.history.push('/home')
     })
-    .catch(error => { console.log(error); this.logoutHandler() })
   }
 
   loginHandler = (userInfo) => {
@@ -64,11 +63,14 @@ class App extends Component {
     })
     .then(r => r.json())
     .then(data => {
-      this.setState({ newUser: data.user})
-      localStorage.setItem("token", data.jwt)
-      this.props.history.push('/home')
+      if (data.user) {
+        this.setState({ newUser: data.user })
+        localStorage.setItem("token", data.jwt)
+        this.props.history.push('/home')
+      } else {
+        window.alert('Incorrect login info or you have not signed up yet!')
+      }
     })
-    .catch(error => { console.log(error); this.logoutHandler() })
 
   }
 

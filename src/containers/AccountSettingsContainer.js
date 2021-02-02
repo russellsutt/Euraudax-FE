@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Form, Container } from 'react-bootstrap'
 
-const BASE_API = "https://euraudax-app-api.herokuapp.com/"
+// const BASE_API = "https://euraudax-app-api.herokuapp.com/"
+const BASE_API = "http://localhost:3000/"
+const STRAVA_CLIENT_ID = process.env.REACT_APP_STRAVA_CLIENT_ID
 
 class AccountSettingsContainer extends Component {
 
@@ -52,6 +54,10 @@ class AccountSettingsContainer extends Component {
         this.props.history.push('/home')
     }
 
+    importStrava = () => {
+        window.location.replace(`http://www.strava.com/oauth/authorize?client_id=${STRAVA_CLIENT_ID}&response_type=code&redirect_uri=http://localhost:3001/home/exchange_token&approval_prompt=force&scope=read_all`)
+    }
+
     render() {
         return (
             <div className="main-feed">
@@ -89,7 +95,7 @@ class AccountSettingsContainer extends Component {
                     </Container>                         
                 </div>
                 <br/>
-                <button onClick={() => { this.props.history.push('/home/accountsettings') }}>Import Strava Account</button>
+                <button onClick={() => { this.importStrava() }}>Import Strava Account</button>
                 <br/><br/>
                 <button onClick={this.backToProfile}>Cancel</button>
             </div>

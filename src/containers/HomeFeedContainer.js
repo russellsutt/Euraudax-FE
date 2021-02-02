@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom'
 import EventCard from '../components/EventCard'
 import '../components/scss/Event.scss'
 
-const BASE_API = 'https://euraudax-app-api.herokuapp.com/'
+// const BASE_API = 'https://euraudax-app-api.herokuapp.com/'
+const BASE_API = "http://localhost:3000/"
 
 class HomeFeedContainer extends Component {
 

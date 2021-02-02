@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom'
 import Event from './Event'
 
 
-const BASE_API = "https://euraudax-app-api.herokuapp.com/"
+// const BASE_API = "https://euraudax-app-api.herokuapp.com/"
+const BASE_API = "http://localhost:3000/"
 
 class EventShow extends Component {
 
